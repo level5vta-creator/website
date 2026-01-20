@@ -12,6 +12,237 @@ const floatingShapes = document.querySelector('.floating-shapes');
 // Contract Address: CY1P83KnKwFYostvjQcoR2HJLyEJWRBRaVQmYyyD3cR8
 const CONTRACT_ADDRESS = 'CY1P83KnKwFYostvjQcoR2HJLyEJWRBRaVQmYyyD3cR8';
 
+// Translation System
+const translations = {
+    en: {
+        // Navigation
+        'nav.title': 'SUOLALA',
+        'nav.home': 'Home',
+        'nav.token': 'Token',
+        'nav.nfts': 'NFTs',
+        'nav.roadmap': 'Roadmap',
+        
+        // Hero Section
+        'hero.solana': 'SOLANA',
+        'hero.title2': 'We Build, We Rise',
+        'hero.subtitle': 'The premier Chinese ticker on Solana, inspired by Lily Liu\'s tweet and born as an original IP that captures the resilient spirit of Solana builders.',
+        'hero.buy': 'Buy $SUOLALA',
+        'hero.chart': 'View Chart',
+        
+        // Token Section
+        'token.title': '$SUOLALA Token',
+        'token.subtitle': 'The future of meme utility on Solana',
+        'token.contract': 'Contract Address (Solana)',
+        'token.copy': 'Copy',
+        'token.livePrice': 'Live Price',
+        'token.perToken': 'Per $SUOLALA',
+        'token.marketCap': 'Market Cap',
+        'token.fdv': 'Fully Diluted',
+        'token.liquidity': 'Liquidity',
+        'token.totalUSD': 'Total USD',
+        'token.volume24h': '24h Volume',
+        'token.tradingVolume': 'Trading Volume',
+        'token.transactions24h': '24h Transactions',
+        'token.buysSells': 'Buys + Sells',
+        'token.holders': 'Holders',
+        'token.uniqueWallets': 'Unique Wallets',
+        
+        // Features Section
+        'features.title': 'Why $SUOLALA?',
+        'features.subtitle': 'Built different on Solana',
+        'features.fast.title': 'Fast Solana Transactions',
+        'features.fast.desc': 'Lightning-fast transactions with near-zero fees on the Solana blockchain.',
+        'features.community.title': 'Community Powered',
+        'features.community.desc': '100% community-driven with transparent development and decision making.',
+        'features.secure.title': 'Transparent & Secure',
+        'features.secure.desc': 'Fully audited smart contracts with locked liquidity for maximum security.',
+        'features.utility.title': 'Meme + Utility Vision',
+        'features.utility.desc': 'Combining meme culture with real utility for sustainable growth.',
+        
+        // Music Player
+        'music.title': 'SUOLALA Theme',
+        
+        // NFTs Section
+        'nfts.title': 'SUOLALA NFTs',
+        'nfts.subtitle': 'Exclusive digital collectibles',
+        'nfts.buy': 'Buy NFT',
+        'nfts.fullCollection': 'Full Collection',
+        'nfts.discover': 'Discover all exclusive NFTs',
+        'nfts.seeMore': 'See More',
+        
+        // Roadmap Section
+        'roadmap.title': 'Roadmap',
+        'roadmap.subtitle': 'Journey to the moon',
+        'roadmap.phase1.title': 'Phase 1 - Completed',
+        'roadmap.phase1.item1': 'Token launch & liquidity pool',
+        'roadmap.phase1.item2': 'Community building',
+        'roadmap.phase1.item3': 'First 1,000 holders',
+        'roadmap.phase1.item4': 'Website & socials launch',
+        'roadmap.phase2.title': 'Phase 2 - Current',
+        'roadmap.phase2.item1': 'CEX listings',
+        'roadmap.phase2.item2': 'NFT collection launch',
+        'roadmap.phase2.item3': 'Marketing campaigns',
+        'roadmap.phase2.item4': 'Partnership announcements',
+        'roadmap.phase3.title': 'Phase 3 - Upcoming',
+        'roadmap.phase3.item1': 'Utility platform development',
+        'roadmap.phase3.item2': 'Major exchange listing',
+        'roadmap.phase3.item3': 'Ecosystem expansion',
+        'roadmap.phase3.item4': 'Global meme takeover',
+        
+        // Community Section
+        'community.title': 'Join Our Community',
+        'community.subtitle': 'Be part of the SUOLALA revolution',
+        'community.x': 'X (Twitter)',
+        'community.telegram': 'Telegram',
+        'community.trends': 'trends.fun',
+        
+        // Footer
+        'footer.disclaimer1': '© 2026 SUOLALA. All rights reserved. This is a meme token with no intrinsic value or expectation of financial return. Cryptocurrency investments are highly volatile and risky. Only invest what you can afford to lose.',
+        'footer.disclaimer2': 'Built on Solana'
+    },
+    zh: {
+        // Navigation
+        'nav.title': '索拉拉',
+        'nav.home': '首页',
+        'nav.token': '代币',
+        'nav.nfts': 'NFTs',
+        'nav.roadmap': '路线图',
+        
+        // Hero Section
+        'hero.solana': '索拉纳',
+        'hero.title2': '我们建设，我们崛起',
+        'hero.subtitle': 'Solana上首屈一指的中文代币，受Lily Liu推文启发，作为原创IP诞生，捕捉了Solana建设者的坚韧精神。',
+        'hero.buy': '购买 $SUOLALA',
+        'hero.chart': '查看图表',
+        
+        // Token Section
+        'token.title': '$SUOLALA 代币',
+        'token.subtitle': 'Solana上迷因效用的未来',
+        'token.contract': '合约地址 (Solana)',
+        'token.copy': '复制',
+        'token.livePrice': '实时价格',
+        'token.perToken': '每 $SUOLALA',
+        'token.marketCap': '市值',
+        'token.fdv': '完全稀释',
+        'token.liquidity': '流动性',
+        'token.totalUSD': '总美元',
+        'token.volume24h': '24小时交易量',
+        'token.tradingVolume': '交易量',
+        'token.transactions24h': '24小时交易',
+        'token.buysSells': '买入 + 卖出',
+        'token.holders': '持有者',
+        'token.uniqueWallets': '唯一钱包',
+        
+        // Features Section
+        'features.title': '为什么选择 $SUOLALA?',
+        'features.subtitle': '在Solana上与众不同',
+        'features.fast.title': '快速的Solana交易',
+        'features.fast.desc': 'Solana区块链上近乎零费用的闪电般快速交易。',
+        'features.community.title': '社区驱动',
+        'features.community.desc': '100%社区驱动，具有透明的开发和决策过程。',
+        'features.secure.title': '透明且安全',
+        'features.secure.desc': '完全审计的智能合约，锁定流动性以确保最大安全。',
+        'features.utility.title': '迷因 + 实用愿景',
+        'features.utility.desc': '将迷因文化与真实效用相结合，实现可持续增长。',
+        
+        // Music Player
+        'music.title': '索拉拉主题曲',
+        
+        // NFTs Section
+        'nfts.title': '索拉拉 NFTs',
+        'nfts.subtitle': '独家数字收藏品',
+        'nfts.buy': '购买 NFT',
+        'nfts.fullCollection': '完整收藏',
+        'nfts.discover': '发现所有独家NFTs',
+        'nfts.seeMore': '查看更多',
+        
+        // Roadmap Section
+        'roadmap.title': '路线图',
+        'roadmap.subtitle': '月球之旅',
+        'roadmap.phase1.title': '阶段 1 - 已完成',
+        'roadmap.phase1.item1': '代币上线和流动性池',
+        'roadmap.phase1.item2': '社区建设',
+        'roadmap.phase1.item3': '首批1000名持有者',
+        'roadmap.phase1.item4': '网站和社交媒体上线',
+        'roadmap.phase2.title': '阶段 2 - 当前',
+        'roadmap.phase2.item1': '中心化交易所上线',
+        'roadmap.phase2.item2': 'NFT系列发布',
+        'roadmap.phase2.item3': '营销活动',
+        'roadmap.phase2.item4': '合作伙伴公告',
+        'roadmap.phase3.title': '阶段 3 - 即将到来',
+        'roadmap.phase3.item1': '实用平台开发',
+        'roadmap.phase3.item2': '主要交易所上市',
+        'roadmap.phase3.item3': '生态系统扩展',
+        'roadmap.phase3.item4': '全球迷因接管',
+        
+        // Community Section
+        'community.title': '加入我们的社区',
+        'community.subtitle': '成为索拉拉革命的一部分',
+        'community.x': 'X (推特)',
+        'community.telegram': 'Telegram',
+        'community.trends': '趋势追踪',
+        
+        // Footer
+        'footer.disclaimer1': '© 2026 SUOLALA。保留所有权利。这是一个迷因代币，没有内在价值或财务回报预期。加密货币投资具有高度波动性和风险性。仅投资您能承受损失的金额。',
+        'footer.disclaimer2': '基于Solana构建'
+    }
+};
+
+let currentLanguage = 'en';
+
+// Translation function
+function translatePage(lang) {
+    currentLanguage = lang;
+    const elements = document.querySelectorAll('[data-i18n]');
+    
+    elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = translations[lang][key];
+            } else {
+                element.textContent = translations[lang][key];
+            }
+        }
+    });
+    
+    // Update active button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    if (lang === 'en') {
+        document.getElementById('langEn').classList.add('active');
+    } else {
+        document.getElementById('langZh').classList.add('active');
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('suolala-language', lang);
+    
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+}
+
+// Language toggle setup
+function setupLanguageToggle() {
+    const langEnBtn = document.getElementById('langEn');
+    const langZhBtn = document.getElementById('langZh');
+    
+    // Load saved language or default to English
+    const savedLang = localStorage.getItem('suolala-language') || 'en';
+    translatePage(savedLang);
+    
+    // Event listeners
+    langEnBtn.addEventListener('click', () => {
+        translatePage('en');
+    });
+    
+    langZhBtn.addEventListener('click', () => {
+        translatePage('zh');
+    });
+}
+
 // Copy Contract Address Function
 function copyContract() {
     const contractText = document.getElementById('contractAddress').textContent;
@@ -500,6 +731,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupSmoothScrolling();
     setupThemeToggle();
     setupScrollAnimations();
+    setupLanguageToggle(); // Add language toggle
     
     // Create enhanced background animations
     createParticles();
